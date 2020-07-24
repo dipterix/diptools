@@ -6,4 +6,5 @@ machine:
 
 test:
   override:
-    - docker build -t dipterix/dipsaus pkg-dipsaus
+    - docker build -t dipterix/dipsaus:latest pkg-dipsaus/latest
+    - docker build -t dipterix/dipsaus:devel pkg-dipsaus/devel
