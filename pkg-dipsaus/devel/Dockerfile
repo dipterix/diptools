@@ -1,4 +1,4 @@
-FROM diptools:latest
+FROM dipterix/diptools:latest
 
 RUN apt-get update -qq \
 	&& apt-get install -t unstable -y --no-install-recommends \
