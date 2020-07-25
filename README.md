@@ -1,7 +1,7 @@
 [![license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://opensource.org/licenses/GPL-3.0)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
-Visit [rocker-project.org](https://github.com/dipterix) for more about available Dipterix's R packages.
+Visit [github](https://github.com/dipterix) for more about available Dipterix's R packages.
 
 
 ## Diptools: Dipterix's personal toolbox
