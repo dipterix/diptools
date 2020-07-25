@@ -1,5 +1,6 @@
 [![license](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://opensource.org/licenses/GPL-3.0)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Docker Layers](https://images.microbadger.com/badges/image/dipterix/diptools.svg)](https://microbadger.com/images/dipterix/diptools "Get your own image badge on microbadger.com")
 
 Visit [github](https://github.com/dipterix) for more about available Dipterix's R packages.
 

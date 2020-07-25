@@ -1,3 +1,5 @@
+# Test file
+
 FROM rocker/r-base:latest
 
 LABEL maintainer="Zhengjia Wang <zhengjia.wang@rice.edu>" \
@@ -10,7 +12,9 @@ RUN apt-get update -qq \
     file \
     git \
     libcairo2-dev \
+    libclang-dev \
     libcurl4-openssl-dev \
+    libedit2 \
     libfftw3-dev \
     libgit2-dev \
     libhdf5-dev \
@@ -21,11 +25,11 @@ RUN apt-get update -qq \
     psmisc \
     procps \
     sudo \
+    unixodbc-dev \
     wget \
     zlib1g-dev \
   && install2.r --error --skipinstalled --deps TRUE \
-    devtools fftwtools hdf5r fst \
-    dipsaus lazyarray threeBrain \
-  && Rscript --verbose --vanilla -e "devtools::install_github('beauchamplab/raveio', upgrade = FALSE, force = TRUE)" \
-  && Rscript --verbose --vanilla -e "devtools::install_github('dipterix/rutabaga', upgrade = FALSE, force = TRUE)"
+    devtools fftwtools hdf5r fst
+
+# docker build --tag diptools:test ./pkg-dipsaus/test
 
