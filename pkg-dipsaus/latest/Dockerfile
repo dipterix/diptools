@@ -1,13 +1,10 @@
 FROM rocker/r-base:latest
 
-LABEL org.label-schema.license="GPL-3.0" \
-      org.label-schema.vcs-url="https://github.com/dipterix/diptools" \
-      org.label-schema.vendor="Dipterix's personal repositories" \
-      maintainer="Zhengjia Wang <zhengjia.wang@rice.edu>"
+LABEL maintainer="Zhengjia Wang <zhengjia.wang@rice.edu>"
 
 RUN apt-get update -qq \
-	&& apt-get install -t unstable -y --no-install-recommends \
-	  file \
+  && apt-get install -y --no-install-recommends \
+    file \
     git \
     libapparmor1 \
     libclang-dev \
@@ -29,12 +26,20 @@ RUN apt-get update -qq \
     libssh2-1-dev \
     unixodbc-dev \
     libsasl2-dev \
-	&& install2.r --error \
+    zlib1g-dev \
+    libgit2-dev \
+    libfftw3-dev \
+    libv8-dev \
+    libhdf5-dev \
+  && install2.r --error \
     --deps TRUE \
-    BiocManager \
     devtools \
+    fftwtools \
+    hdf5r \
+    fst \
     dipsaus \
     lazyarray \
-    threeBrain
+    threeBrain \
+  && Rscript --verbose --vanilla -e "devtools::install_github('beauchamplab/raveio', upgrade = FALSE, force = TRUE)" \
+  && Rscript --verbose --vanilla -e "devtools::install_github('dipterix/rutabaga', upgrade = FALSE, force = TRUE)"
 
-# docker build --tag dipsaus:latest ./pkg-dipsaus/latest
