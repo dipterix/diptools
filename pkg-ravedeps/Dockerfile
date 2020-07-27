@@ -4,7 +4,7 @@ FROM dipterix/diptools:latest
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends \
-  && install2.r --error --skipinstalled --deps TRUE \
+  && install2.r --error --skipinstalled \
     shinyFiles servr reticulate shinyjs shinydashboard signal \
     colorspace viridisLite RColorBrewer munsell labeling farver scales \
     isoband gtable RcppEigen statmod nloptr minqa progress cellranger \
