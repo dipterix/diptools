@@ -12,12 +12,16 @@ RUN apt-get update -qq \
     libcairo2-dev \
     libcurl4-openssl-dev \
     libfftw3-dev \
+    libfreetype6-dev \
     libfribidi-dev \
     libgit2-dev \
     libhdf5-dev \
     libharfbuzz-dev \
+    libjpeg-dev \
+    libpng-dev \
     libssl-dev \
     libssh2-1-dev \
+    libtiff5-dev \
     libv8-dev \
     libxml2-dev \
     psmisc \
