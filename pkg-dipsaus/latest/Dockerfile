@@ -12,8 +12,10 @@ RUN apt-get update -qq \
     libcairo2-dev \
     libcurl4-openssl-dev \
     libfftw3-dev \
+    libfribidi-dev \
     libgit2-dev \
     libhdf5-dev \
+    libharfbuzz-dev \
     libssl-dev \
     libssh2-1-dev \
     libv8-dev \
