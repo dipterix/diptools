@@ -31,7 +31,6 @@ RUN apt-get update -qq \
     zlib1g-dev \
   && install2.r --error --skipinstalled --deps TRUE \
     devtools fftwtools hdf5r fst \
-    dipsaus lazyarray threeBrain \
-  && Rscript --verbose --vanilla -e "devtools::install_github('beauchamplab/raveio', upgrade = FALSE, force = TRUE)" \
+    dipsaus lazyarray threeBrain raveio \
   && Rscript --verbose --vanilla -e "devtools::install_github('dipterix/rutabaga', upgrade = FALSE, force = TRUE)"
 
