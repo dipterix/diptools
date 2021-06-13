@@ -35,7 +35,7 @@ RUN apt-get update -qq \
     wget \
     zlib1g-dev \
   && install2.r --error --skipinstalled --deps TRUE \
-    remotes devtools fftwtools hdf5r fst \
+    remotes devtools fftwtools hdf5r fst docopt \
     dipsaus lazyarray threeBrain raveio \
   # Get NCPUs
   && ncpus=$(Rscript --no-save -e "cat(parallel::detectCores())") \
