@@ -12,6 +12,7 @@ RUN apt-get update -qq \
     git \
     libsodium-dev \
     libffi-dev \
+    libbz2-dev \
     libpcre2-dev \
     libcairo2-dev \
     libcurl4-openssl-dev \
@@ -36,10 +37,15 @@ RUN apt-get update -qq \
   && install2.r --error --skipinstalled --deps TRUE \
     remotes devtools fftwtools hdf5r fst \
     dipsaus lazyarray threeBrain raveio \
-  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/rutabaga', upgrade = FALSE, force = TRUE)" \
-  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/farray', upgrade = FALSE, force = TRUE)" \
-  # && Rscript --verbose --no-save -e "remotes::install_github('dipterix/ravepy', upgrade = FALSE, force = TRUE)" \
-  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/restbatch', upgrade = FALSE, force = TRUE)"
-  # && Rscript --verbose --no-save -e "remotes::install_github('beauchamplab/rave', upgrade = FALSE, force = TRUE)" \
-  # && Rscript --verbose --no-save -e "remotes::install_github('beauchamplab/ravebuiltins@migrate2', upgrade = FALSE, force = TRUE)"
+  # Get NCPUs
+  && ncpus=$(Rscript --no-save -e "cat(parallel::detectCores())") \
+  && echo "Installing packages with $ncpus CPUs" \
+  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/rutabaga', upgrade = FALSE, force = TRUE, Ncpus = $ncpus)" \
+  # The following packages are not required by RAVE
+  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/farray', upgrade = FALSE, force = TRUE, Ncpus = $ncpus)" \
+  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/restbatch', upgrade = FALSE, force = TRUE, Ncpus = $ncpus)"
+
+
+# docker build --tag diptools:latest ./pkg-dipsaus/latest
+
 

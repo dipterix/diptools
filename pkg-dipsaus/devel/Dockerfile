@@ -2,9 +2,12 @@ FROM dipterix/diptools:latest
 
 RUN apt-get update -qq \
 	&& apt-get install -t unstable -y --no-install-recommends \
-	&& Rscript --verbose --vanilla -e "devtools::install_github('dipterix/dipsaus', upgrade = FALSE, force = TRUE)" \
-	&& Rscript --verbose --vanilla -e "devtools::install_github('dipterix/lazyarray', upgrade = FALSE, force = TRUE)" \
-	&& Rscript --verbose --vanilla -e "devtools::install_github('dipterix/threeBrain', upgrade = FALSE, force = TRUE)"
+	libsodium-dev \
+	&& install2.r --error fastmap dipsaus \
+	&& Rscript --verbose --no-save -e "devtools::install_github('dipterix/restbatch', upgrade = FALSE, force = TRUE)"
+#	&& Rscript --verbose --no-save -e "devtools::install_github('dipterix/dipsaus', upgrade = FALSE, force = TRUE)" \
+#	&& Rscript --verbose --no-save -e "devtools::install_github('dipterix/farray', upgrade = FALSE, force = TRUE)" \
+#	&& Rscript --verbose --no-save -e "devtools::install_github('dipterix/threeBrain', upgrade = FALSE, force = TRUE)"
 
 # docker build --tag diptools:latest ./pkg-dipsaus/latest
 # docker build --tag diptools:devel ./pkg-dipsaus/devel

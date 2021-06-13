@@ -4,11 +4,6 @@ FROM dipterix/diptools:latest
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends \
-  && install2.r --error --skipinstalled \
-    shinyFiles servr reticulate shinyjs shinydashboard signal \
-    colorspace viridisLite RColorBrewer munsell labeling farver scales \
-    isoband gtable RcppEigen statmod nloptr minqa progress cellranger \
-    zip tidyselect readr hms forcats openxlsx readxl haven sp RcppArmadillo matrixStats \
-    conquer MatrixModels SparseM lme4 ggplot2 numDeriv mvtnorm rio \
-    maptools quantreg pbkrtest carData shinyFiles shinyjs lmerTest \
-    circular car
+  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/ravepy', upgrade = FALSE, force = TRUE)" \
+  && Rscript --verbose --no-save -e "remotes::install_github('beauchamplab/ravebuiltins@migrate2', upgrade = FALSE, force = TRUE)" \
+  && Rscript --verbose --no-save -e "remotes::install_github('beauchamplab/rave', upgrade = FALSE, force = TRUE)"
