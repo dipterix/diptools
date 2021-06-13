@@ -7,8 +7,13 @@ LABEL maintainer="Zhengjia Wang <zhengjia.wang@rice.edu>" \
 
 RUN apt-get update -qq \
   && apt-get install -y --no-install-recommends \
+    build-essential \
     file \
     git \
+    libsodium-dev \
+    libffi-dev \
+    ibbz2-dev \
+    libpcre2-dev \
     libcairo2-dev \
     libcurl4-openssl-dev \
     libfftw3-dev \
@@ -30,7 +35,12 @@ RUN apt-get update -qq \
     wget \
     zlib1g-dev \
   && install2.r --error --skipinstalled --deps TRUE \
-    devtools fftwtools hdf5r fst \
+    remotes devtools fftwtools hdf5r fst \
     dipsaus lazyarray threeBrain raveio \
-  && Rscript --verbose --vanilla -e "devtools::install_github('dipterix/rutabaga', upgrade = FALSE, force = TRUE)"
+  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/rutabaga', upgrade = FALSE, force = TRUE)" \
+  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/farray', upgrade = FALSE, force = TRUE)" \
+  # && Rscript --verbose --no-save -e "remotes::install_github('dipterix/ravepy', upgrade = FALSE, force = TRUE)" \
+  && Rscript --verbose --no-save -e "remotes::install_github('dipterix/restbatch', upgrade = FALSE, force = TRUE)"
+  # && Rscript --verbose --no-save -e "remotes::install_github('beauchamplab/rave', upgrade = FALSE, force = TRUE)" \
+  # && Rscript --verbose --no-save -e "remotes::install_github('beauchamplab/ravebuiltins@migrate2', upgrade = FALSE, force = TRUE)"
 
