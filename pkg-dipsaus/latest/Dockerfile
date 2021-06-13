@@ -12,7 +12,6 @@ RUN apt-get update -qq \
     git \
     libsodium-dev \
     libffi-dev \
-    ibbz2-dev \
     libpcre2-dev \
     libcairo2-dev \
     libcurl4-openssl-dev \
